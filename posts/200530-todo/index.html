@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <link href="http://gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <!-- Metadata -->
+    <meta name="description" content="따로 블로그를 위한 static site generator를 쓰지 않고 맨 처음부터 그냥 내가 필요한 기능만 추가해가면서 만들고 있기 때문에 추가해야 할 기능들이 엄청엄청엄청 많다. 그래서 리스트를 만들고 해결되면 구현 방법을 하나씩 ...">
+		<meta property="og:description" content="따로 블로그를 위한 static site generator를 쓰지 않고 맨 처음부터 그냥 내가 필요한 기능만 추가해가면서 만들고 있기 때문에 추가해야 할 기능들이 엄청엄청엄청 많다. 그래서 리스트를 만들고 해결되면 구현 방법을 하나씩 ...">
+		<meta property="og:title" content="블로그에 추가해야 할 기능들" />
+		<meta property="og:type" content="post" />
+		<meta property="og:url" content="https://joytoyou.github.io/posts/200530-todo" />
+    <meta property="og:image" content="https://joytoyou.github.io/images/photo.jpg" />
+    <title>
+      블로그에 추가해야 할 기능들
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../theme/css/poole.css">
+    <link rel="stylesheet" href="../../theme/css/syntax.css">
+    <link rel="stylesheet" href="../../theme/css/hyde.css">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com/">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic|Nunito:200,400,500,700|Balsamiq+Sans:700|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+
+    <!-- fontawesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../images/photo.jpg">
+    <link rel="shortcut icon" href="../../images/photo.jpg">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  </head>
+
+  <body class="theme-base-0a">
+    <div class="sidebar">
+      <div class="container sidebar-sticky">
+        <div class="sidebar-about">
+          <h1>
+            <a href="../..">
+              <img class="profile-picture" src="../../images/photo.jpg">
+              Trial & Error
+            </a>
+          </h1>
+          <p class="lead"></p>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-nav-item" href="https://twitter.com/_JoyToYou">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a class="sidebar-nav-item" href="https://github.com/joytoyou">
+            <i class="fab fa-github"></i>
+          </a>
+          <a class="sidebar-nav-item" href="None">
+            <i class="fas fa-rss"></i>
+          </a>
+        </nav>
+
+        &copy; 2020 Joy. All rights reserved.
+      </div>
+    </div>
+
+    <div class="content container">
+      <div class="post">
+        <h1 class="post-title">블로그에 추가해야 할 기능들</h1>
+        <span class="post-date">2020/05/30</span>
+        <span class="post-content">
+          <p><a href="../200524-again">따로 블로그를 위한 static site generator를 쓰지 않고 맨 처음부터 그냥 내가 필요한 기능만 추가해가면서 만들고 있기 때문에</a> 추가해야 할 기능들이 엄청엄청엄청 많다. 그래서 리스트를 만들고 해결되면 구현 방법을 하나씩 추가하기로!</p>
+          <ul class="checklist">
+          <li><input type="checkbox" disabled checked> Markdown에 checkbox extension 추가<ul class="checklist">
+          <li><input type="checkbox" disabled checked> 나는 checkbox가 마크다운 기본 기능인 줄 알았는데 왜 안 되나 싶어서 찾아봤더니 따로 기능을 추가해야줘야 하는 거였네 <a href="https://pypi.org/project/markdown-checklist/">markdown-checklist</a></li>
+          <li><input type="checkbox" disabled checked> 근데 checkbox 나오게 할 땐 앞에 점 사라졌으면 좋겠어~~~~<br />
+          <code>ul.checklist { list-style-type: none; }</code><br />
+          <code>li input { margin-left: -20px; }</code><br />
+                CSS에서 점을 안 보이게 하고 그 자리에 checkbox를 밀어서 해결😁</li>
+          <li><input type="checkbox" disabled> 근데 Github Markdown처럼 쓰려면 넘어야 할 산이 많구나......</li>
+          </ul>
+          </li>
+          <li><input type="checkbox" disabled checked> HTML rendering😔<ul class="checklist">
+          <li><input type="checkbox" disabled checked> Jinja2 template에서 block 안에 내용을 넣어줄 때 생기는 이상한 newline과 indent 불일치는 <a href="https://stackoverflow.com/questions/45719062/jinja-docx-template-avoiding-new-line-in-nested-for/45719723">여기를</a> 보고 해결</li>
+          <li><input type="checkbox" disabled checked> Markdown이 rendering하는 HTML의 indent는 <a href="https://stackoverflow.com/a/53775887">이걸로</a> 해결</li>
+          </ul>
+          </li>
+          <li><input type="checkbox" disabled> 뒤로 가기 버튼 추가<ul>
+          <li>대충 추가는 했는데 지금은 그냥 블로그 메인 화면으로 보내고 있다 (어차피 글 목록 &amp; 포스트 밖에 없으니까) 본래의 뒤로 가기 기능을 수행하게 하는건 블로그가 조금 더 복잡해지면 하기로!</li>
+          </ul>
+          </li>
+          <li><input type="checkbox" disabled checked> Twitter와 블로그 연동 (조금 부끄러워서 비밀계정에 하고 있는 중)<ul>
+          <li>https://github.com/bear/python-twitter</li>
+          <li>지금은 PostUpdate로 블로그의 새 글 알림을 주는 용도로만 사용하고 있지만 아마 더 많은 일을 할 수 있겠지!</li>
+          </ul>
+          </li>
+          <li><input type="checkbox" disabled> DISQUS로 댓글 기능 추가</li>
+          <li><input type="checkbox" disabled checked> 포스트 metadata 독립적으로 설정</li>
+          <li><input type="checkbox" disabled> Category / Tags </li>
+          <li><input type="checkbox" disabled> Code Block 예쁘게 하기😊</li>
+          </ul>
+        </span>
+        <a href="../.."><strong> ≪ 글 목록으로 가기 </strong></a>
+      </div>
+    </div>
+  </body>
+</html>

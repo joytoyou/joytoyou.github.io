@@ -438,3 +438,12 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+/* Custom - checkbox*/
+ul.checklist {
+  list-style-type: none;
+}
+
+li input {
+  margin-left: -20px;
+}
