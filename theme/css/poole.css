@@ -339,10 +339,6 @@ tbody tr:nth-child(odd) th {
 .post-title,
 .post-title a {
   font-family: 'Nunito', Helvetica Neue, Arial, sans-serif;
-  color: #f4d475;
-}
-.page-title,
-.post-title {
   margin-top: 0;
 }
 

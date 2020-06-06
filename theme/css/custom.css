@@ -15,6 +15,10 @@ body {
   overscroll-behavior: none;
 }
 
+.sidebar {
+  background-color: #f4d475;
+}
+
 
 /* from hyde.css, originally from Base16 (http://chriskempson.github.io/base16/#default) */
 .rainbow-1 a {
