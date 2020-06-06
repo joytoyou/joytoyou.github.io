@@ -1,0 +1,42 @@
+/* checkbox */
+ul.checklist {
+  list-style-type: none;
+}
+
+li input {
+  margin-left: -20px;
+}
+
+li, ul.checklist {
+  text-align: justify;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+
+/* from hyde.css, originally from Base16 (http://chriskempson.github.io/base16/#default) */
+.rainbow-1 a {
+  color: #ac4142 !important;
+}
+
+.rainbow-2 a {
+  color: #d28445 !important;
+}
+
+.rainbow-3 a {
+  color: #f4d475 !important;
+}
+
+.rainbow-4 a {
+  color: #90a959 !important;
+}
+
+.rainbow-5 a {
+  color: #6a9fb5 !important;
+}
+
+.rainbow-6 a {
+  color: #aa759f !important;
+}
