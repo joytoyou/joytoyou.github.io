@@ -15,6 +15,10 @@ body {
   overscroll-behavior: none;
 }
 
+pre, code {
+    white-space: pre-line;
+}
+
 .sidebar {
   background-color: #f4d475;
 }
