@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../../theme/css/hyde.css">
     <link rel="stylesheet" href="../../theme/css/custom.css">
     <link rel="dns-prefetch" href="//fonts.googleapis.com/">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Nunito:200,400,500,700|Balsamiq+Sans:700|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro|Nunito:200,400,500,700|Balsamiq+Sans:700|PT+Sans:400,400italic,700&amp;subset=latin,latin-ext">
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
 
     <!-- fontawesome -->
@@ -90,7 +90,7 @@
           (<a href="https://stackoverflow.com/questions/10997577/python-timezone-conversion">stackoverflow의 이 글</a>에 따르면 파이썬 3.9부터는 <code>zoneInfo</code>라는 모듈이 기본적으로 추가되어서 굳이 이 라이브러리를 따로 설치할 필요는 없는 듯 한데 나는 3.7을 쓰고 있기 때문에 버전을 업그레이드 하는 대신 이 라이브러리를 설치하기로 했다)</p>
           <p><code>pip install pytz</code> 로 설치해주면 된다.</p>
           <p>시간대 변경을 위해서는</p>
-          <pre><code>from datetime import datetime
+          <pre><code>from datetime import datetime<br>
           from pytz import timezone
           </code></pre>
           <p>두 모듈을 import 해줘야 한다.</p>
@@ -104,45 +104,45 @@
           <p>위의 링크에 따라, 트위터 시간을 포맷 코드로 표현하면</p>
           <p><code>%a %b %d %H:%M:%S %z %Y</code> 가 된다.</p>
           <p><code>datetime.strptime(date_string, format)</code>과 같이 사용이 가능하기 때문에,</p>
-          <pre><code>&gt;&gt;&gt; utime = datetime.strptime('Sat Jun 13 07:40:11 +0000 2020', '%a %b %d %H:%M:%S %z %Y')
-          &gt;&gt;&gt; utime
+          <pre><code>&gt;&gt;&gt; utime = datetime.strptime('Sat Jun 13 07:40:11 +0000 2020', '%a %b %d %H:%M:%S %z %Y')<br>
+          &gt;&gt;&gt; utime<br>
           datetime.datetime(2020, 6, 13, 7, 40, 11, tzinfo=datetime.timezone.utc)
           </code></pre>
           <p>이렇게 변환이 가능한 것이다. 일일이 년월일시분초 파싱하려면 적어도 6~7줄의 코드가 필요한데 한 줄로 해결이 되었다.
           tzinfo(timezone information)가 UTC로 잘 들어가 있으니까 이제 이 <code>utime</code>을 우리나라 시간대로 바꾸는 것은</p>
-          <pre><code>&gt;&gt;&gt; ktime = utime.astimezone(timezone('Asia/Seoul'))
-          &gt;&gt;&gt; ktime
+          <pre><code>&gt;&gt;&gt; ktime = utime.astimezone(timezone('Asia/Seoul'))<br>
+          &gt;&gt;&gt; ktime<br>
           datetime.datetime(2020, 6, 13, 16, 40, 11, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)
           </code></pre>
           <p>이렇게 해주면 9시간이 잘 더해져서 우리나라 시간으로 변환이 된다.
           앞에서 어렵다고 생각한 문제들도 모두 잘 해결이 된다.</p>
-          <pre><code># import pytz  
-          # utc = pytz.utc  
-          &gt;&gt;&gt; utct = datetime(2020, 2, 28, 15, 7, 14, tzinfo=utc)  
-          &gt;&gt;&gt; utct.astimezone(kst)  
-          datetime.datetime(2020, 2, 29, 0, 7, 14, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)  
-          &gt;&gt;&gt; utct = datetime(2019, 2, 28, 15, 7, 14, tzinfo=utc)  
-          &gt;&gt;&gt; utct.astimezone(kst)  
-          datetime.datetime(2019, 3, 1, 0, 7, 14, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)  
-          &gt;&gt;&gt; utct = datetime(2019, 12, 31, 15, 7, 14, tzinfo=utc)  
-          &gt;&gt;&gt; utct.astimezone(kst)  
+          <pre><code># import pytz <br>
+          # utc = pytz.utc <br>
+          &gt;&gt;&gt; utct = datetime(2020, 2, 28, 15, 7, 14, tzinfo=utc) <br>
+          &gt;&gt;&gt; utct.astimezone(kst) <br>
+          datetime.datetime(2020, 2, 29, 0, 7, 14, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;) <br>
+          &gt;&gt;&gt; utct = datetime(2019, 2, 28, 15, 7, 14, tzinfo=utc) <br>
+          &gt;&gt;&gt; utct.astimezone(kst)  <br>
+          datetime.datetime(2019, 3, 1, 0, 7, 14, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;) <br>
+          &gt;&gt;&gt; utct = datetime(2019, 12, 31, 15, 7, 14, tzinfo=utc)  <br>
+          &gt;&gt;&gt; utct.astimezone(kst)  <br>
           datetime.datetime(2020, 1, 1, 0, 7, 14, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)
           </code></pre>
           <p>주의할 점은, 시간대 변환을 위해서는 변환할 datetime object에 <strong>시간대가 지정이 되어 있어야 한다</strong>는 것이다.
           이렇게 써놓으면 당연해보이지만 막상 해보면 그렇게 당연하지 않다. 보통 많이 사용하는 <code>datetime.now()</code>의 datetime object는 <strong>시간대 지정이 되어있지 않은 naive object</strong>인데,
           이렇게 (tzinfo가 없이) 만들어진 시간대에는 <code>astimezone</code>으로 변환을 하려 해도 변환이 되지 않는다.</p>
-          <pre><code>&gt;&gt;&gt; ntime = datetime.now()  
-          &gt;&gt;&gt; ntime  
-          datetime.datetime(2020, 6, 14, 11, 18, 54, 95132)  # tzinfo가 없음  
-          &gt;&gt;&gt; ntime.astimezone(timezone('Asia/Seoul'))  
+          <pre><code>&gt;&gt;&gt; ntime = datetime.now()  <br>
+          &gt;&gt;&gt; ntime  <br>
+          datetime.datetime(2020, 6, 14, 11, 18, 54, 95132)  # tzinfo가 없음  <br>
+          &gt;&gt;&gt; ntime.astimezone(timezone('Asia/Seoul'))  <br>
           datetime.datetime(2020, 6, 14, 11, 18, 54, 95132, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)
           </code></pre>
           <p>아까 트위터 시간에서는 시간대 지정을 안 해주지 않았냐고? 거기에는 이미 문자열 자체에 정보가 있었다! <code>+0000</code> 부분이 UTC를 표시하는 것이기 때문에 이를 <code>%z</code>로 받아 시간대를 지정해주게 된 것이다.</p>
           <p>시간대 정보가 없는 시간 문자열을 파싱해서 시간대 변환을 시도해보자.</p>
-          <pre><code>&gt;&gt;&gt; ntime = datetime.strptime('2020-06-06 11:33:44', '%Y-%m-%d %H:%M:%S')  
-          &gt;&gt;&gt; ntime  
-          datetime.datetime(2020, 6, 6, 11, 33, 44)  # tzinfo 없음!  
-          &gt;&gt;&gt; ntime.astimezone(pytz.timezone('Asia/Seoul'))  
+          <pre><code>&gt;&gt;&gt; ntime = datetime.strptime('2020-06-06 11:33:44', '%Y-%m-%d %H:%M:%S')  <br>
+          &gt;&gt;&gt; ntime  <br>
+          datetime.datetime(2020, 6, 6, 11, 33, 44)  # tzinfo 없음!  <br>
+          &gt;&gt;&gt; ntime.astimezone(pytz.timezone('Asia/Seoul'))  <br>
           datetime.datetime(2020, 6, 6, 11, 33, 44, tzinfo=&lt;DstTzInfo 'Asia/Seoul' KST+9:00:00 STD&gt;)
           </code></pre>
           <p>역시 변환이 되지 않는다.</p>

@@ -20,7 +20,9 @@ body {
 }
 
 pre, code {
-    white-space: pre-line;
+  white-space: nowrap;
+  overflow: scroll;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .sidebar {
