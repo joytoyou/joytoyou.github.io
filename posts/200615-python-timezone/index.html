@@ -85,22 +85,22 @@
           </ul>
           </li>
           </ul>
-          <p>단순히 시간만 더하고 빼는 문제가 아니었던 것이다! 물론 저 모든 경우에 대한 규칙을 정해서 바꿔주면 되긴 한다. <strong>그치만 뭐하러?</strong></p>
-          <p>파이썬의 <code>datetime</code> 모듈에서 시간대를 바꿔줄 수 있다. 다만 시간대에 관한 정보가 있어야 하는데, 이를 위하여 <a href="https://pypi.org/project/pytz/">pytz</a> 라는 라이브러리가 있다.
-          (<a href="https://stackoverflow.com/questions/10997577/python-timezone-conversion">stackoverflow의 이 글</a> 에 따르면 파이썬 3.9부터는 <code>zoneInfo</code>라는 모듈이 기본적으로 추가되어서 굳이 이 라이브러리를 따로 설치할 필요는 없는 듯 한데 나는 3.7을 쓰고 있어서 그냥 쓰던 걸 계속 쓰기로 했다)</p>
+          <p>단순히 시간만 더하고 빼는 문제가 아니었네 (당연하지...) 물론 저 모든 경우에 대한 규칙을 정해서 바꿔주면 되긴 한다. <strong>그치만 뭐하러?</strong></p>
+          <p>파이썬의 <code>datetime</code> 모듈을 사용하면 시간대를 바꿔줄 수 있다. 다만 이 모듈 자체에는 시간대에 관한 정보는 포함되어 있지 않아서, 이를 위하여 <a href="https://pypi.org/project/pytz/">pytz</a>라는 라이브러리를 설치해주어야 한다.
+          (<a href="https://stackoverflow.com/questions/10997577/python-timezone-conversion">stackoverflow의 이 글</a>에 따르면 파이썬 3.9부터는 <code>zoneInfo</code>라는 모듈이 기본적으로 추가되어서 굳이 이 라이브러리를 따로 설치할 필요는 없는 듯 한데 나는 3.7을 쓰고 있기 때문에 버전을 업그레이드 하는 대신 이 라이브러리를 설치하기로 했다)</p>
           <p><code>pip install pytz</code> 로 설치해주면 된다.</p>
           <p>시간대 변경을 위해서는</p>
           <pre><code>from datetime import datetime
           from pytz import timezone
           </code></pre>
           <p>두 모듈을 import 해줘야 한다.</p>
-          <p><code>datetime</code> 모듈을 사용해서 시간대를 변경해줘야 하기 때문에 우리가 변경할 시간을 datetime object로 만들어줘야 한다.
+          <p><code>datetime</code> 모듈을 사용해서 시간대를 변경해줄 것이기 때문에 우리가 변경할 시간을 datetime object로 만들어줘야 한다.
           다운로드 받은 트위터 아카이브 안의 트윗 작성 시간 정보는 다음과 같이 표시되어 있다.</p>
           <p><code>Sat Jun 13 07:40:11 +0000 2020</code></p>
           <p>숫자와 문자가 섞여있는 데다가 순서도 완전 뒤죽박죽이다. 이걸 일일이 년/월/일/시/분/초 파싱해서 datetime object로 만들어줘야 하나?</p>
-          <p>그래도 되겠지만... (실제로 처음엔 그렇게 하려고 했었지만...) <strong>그럴 필요가 없다!</strong> <code>datetime.strptime</code> 메소드를 사용하면 저렇게 쓰여진 시간 정보도 바로 datetime object로 만들 수 있다.
-          사실 아무렇게나 쓰여진 시간이면 안되고 모든 정보가 <a href="https://docs.python.org/ko/3/library/datetime.html#strftime-and-strptime-format-codes">표준 날짜 및 시간 서식 포맷 코드</a> 를 준수해야 바로 파싱이 가능하다. 
-          (그런데 사실 저런 대량의 정보는 시간을 표시할 때 어떤 일정한 규칙을 따르고 있을테니 저 포맷 코드를 사용하여 만들어졌을 것이다. 따라서 역변환이 가능한 것이다)</p>
+          <p>그래도 되겠지만... (실제로 처음엔 그렇게 하려고 했었지만) <strong>그럴 필요가 없다!</strong> <code>datetime.strptime</code> 메소드를 사용하면 저렇게 쓰여진 시간 정보도 바로 datetime object로 만들 수 있다.
+          사실 아무렇게나 쓰여진 시간이면 안되고 모든 정보가 <a href="https://docs.python.org/ko/3/library/datetime.html#strftime-and-strptime-format-codes">표준 날짜 및 시간 서식 포맷 코드</a>를 준수해야 바로 파싱이 가능하다. 
+          (그런데 사실 저런 대량의 정보가 제멋대로인 시간 포맷을 가진 경우는 별로 없을 것이다. 저 문자열 역시 포맷 코드를 통하여 만들어졌을테니까! 그래서 역변환이 가능한 것이다)</p>
           <p>위의 링크에 따라, 트위터 시간을 포맷 코드로 표현하면</p>
           <p><code>%a %b %d %H:%M:%S %z %Y</code> 가 된다.</p>
           <p><code>datetime.strptime(date_string, format)</code>과 같이 사용이 가능하기 때문에,</p>

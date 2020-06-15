@@ -11,6 +11,10 @@ li, ul.checklist {
   text-align: justify;
 }
 
+.post-title {
+  text-align: justify;
+}
+
 body {
   overscroll-behavior: none;
 }
